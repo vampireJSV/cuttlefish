@@ -58,13 +58,13 @@ services:
   postfix:
     image: juanluisbaptiste/postfix
     environment:
-      - SMTP_SERVER=mailcatcher
-      - SMTP_PORT=1025
+      - SMTP_SERVER=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
       # The username and password are actually ignore by mailcatcher but need
       # to be set to keep this container happy
-      - SMTP_USERNAME=foo@bar.com
-      - SMTP_PASSWORD=XXXXXXXX
-      - SERVER_HOSTNAME=cuttlefish.io
+      - SMTP_USERNAME=${SMTP_USERNAME}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - SERVER_HOSTNAME=${SERVER_HOSTNAME}
     volumes:
       - ./postfix_log:/var/log:cached
     links:
